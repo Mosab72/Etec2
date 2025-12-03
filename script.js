@@ -263,6 +263,10 @@ function displayContractDetails() {
                 <option value="noDocs">بدون تسليم وثائق محدثة (2)</option>
             </select>
         </div>
+        
+        <div class="results-counter" id="results-counter">
+            📊 عرض جميع العقود (${contractsData.length})
+        </div>
     `;
     
     // عرض العقود
@@ -407,8 +411,22 @@ function filterContractsByStatus(status) {
         });
     }
     
+    // 🎯 أضف هذا الكود هنا (قبل displayContractDetails)
+    const counterElement = document.getElementById('results-counter');
+    const selectElement = document.getElementById('status-filter');
+    
+    if (counterElement && selectElement) {
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        counterElement.innerHTML = `
+            <strong>📊 الفلتر:</strong> ${selectedOption.text} | 
+            <strong>📈 النتائج:</strong> ${filteredContracts.length} عقد
+        `;
+    }
+    // 🎯 انتهى الكود الجديد
+    
     displayContractDetails();
 }
+
 
 // ============================================
 // قائمة الجامعات
