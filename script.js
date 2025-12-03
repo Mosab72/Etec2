@@ -374,14 +374,9 @@ function filterContractsByStatus(status) {
 
     // تحديث عدد العقود في خيار "الكل"
 const optionAll = document.getElementById('option-all');
+optionAll.textContent = `الكل (${filteredContracts.length})`;
 
-// تحديث النص ليكون الحالة المختارة دون الحاجة لعدد العقود
-if (status === 'all') {
-    optionAll.textContent = `الكل (${contractsData.length})`; // إذا كانت حالة "كل"
-} else {
-    optionAll.textContent = status; // استخدام الحالة المختارة كمحتوى نص
-}
-    displayContracts(filteredContracts); // عرض العقود المصفاة
+displayContracts(filteredContracts); // عرض العقود المصفاة
 
         
         filteredContracts = contractsData.filter(c => {
