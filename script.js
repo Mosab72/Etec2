@@ -128,7 +128,7 @@ function updateOverview() {
                     <div class="overview-value">${statusStats.noDocsDelayed}</div>
                 </div>
                 <div class="overview-card">
-                    <div class="overview-label"> لم تتم جدولة الزيارة -متاخر عن التاريخ المجدول للزيارة </div>
+                    <div class="overview-label"> لم تتم جدولة الزيارة </div>
                     <div class="overview-value">${statusStats.notScheduledDelayed}</div>
                 </div>
                 <div class="overview-card">
