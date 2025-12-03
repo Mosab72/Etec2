@@ -263,7 +263,7 @@ function displayContractDetails() {
                 <option value="noDocs">بدون تسليم وثائق محدثة (2)</option>
             </select>
         </div>
-    `;
+    `; 
     
     // عرض العقود
     const contractsHtml = filteredContracts.map(contract => `
@@ -330,7 +330,8 @@ function displayContractDetails() {
     `).join('');
     
     detailsContainer.innerHTML = filterHtml + '<div class="contracts-grid">' + contractsHtml + '</div>';
-}
+    document.getElementById('status-filter').value = selectedStatus;
+} 
 
 function getStatusLabel(contract) {
     const vc = contract.visitComplianceStatus || '';
