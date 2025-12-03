@@ -381,6 +381,8 @@ if (status === 'all') {
 } else {
     optionAll.textContent = status; // استخدام الحالة المختارة كمحتوى نص
 }
+    displayContracts(filteredContracts); // عرض العقود المصفاة
+
         
         filteredContracts = contractsData.filter(c => {
             const vc = c.visitComplianceStatus || '';
