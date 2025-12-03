@@ -258,7 +258,7 @@ function displayContractDetails() {
                 <option value="undefined">غير محددة (228)</option>
                 <option value="visitScheduledDelayed">تم جدولة الزيارة - متأخر (95)</option>
                 <option value="noDocsDelayed">بدون تسليم وثائق - متأخر (59)</option>
-                <option value="notScheduledDelayed">لم تتم جدولة الزيارة - متأخر (42)</option>
+                <option value="notScheduledDelayed"> لم تتم جدولة الزيارة -متاخر عن التاريخ المجدول للزيارة (42) </option>
                 <option value="visitScheduled">تم جدولة الزيارة (19)</option>
                 <option value="noDocs">بدون تسليم وثائق محدثة (2)</option>
             </select>
