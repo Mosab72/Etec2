@@ -246,24 +246,35 @@ function getDepartmentStats() {
 // ============================================
 // تفاصيل العقود مع الفلتر
 // ============================================
-function displayContractDetails() {
-    const detailsContainer = document.getElementById('contracts-details-list');
+function filterContractsByStatus(status) {
+    const allContracts = document.querySelectorAll('.contract-card');
+    const selectElement = document.getElementById('status-filter');
+    const counterElement = document.getElementById('results-counter');
     
-    // إنشاء الفلتر
-    const filterHtml = `
-        <div class="contracts-filter">
-            <h3>🔍 فلتر حالة العقود</h3>
-            <select id="status-filter" onchange="filterContractsByStatus(this.value)">
-                <option value="all" id="option-all"> (${contractsData.length})</option>
-                <option value="undefined">غير محددة (228)</option>
-                <option value="visitScheduledDelayed">تم جدولة الزيارة - متأخر (95)</option>
-                <option value="noDocsDelayed">بدون تسليم وثائق - متأخر (59)</option>
-                <option value="notScheduledDelayed">لم تتم جدولة الزيارة - متأخر (42)</option>
-                <option value="visitScheduled">تم جدولة الزيارة (19)</option>
-                <option value="noDocs">بدون تسليم وثائق محدثة (2)</option>
-            </select>
-        </div>
+    let visibleCount = 0;
+    
+    // تطبيق الفلتر
+    allContracts.forEach(contract => {
+        const contractStatus = contract.getAttribute('data-status');
+        
+        if (status === 'all') {
+            contract.style.display = 'block';
+            visibleCount++;
+        } else if (contractStatus === status) {
+            contract.style.display = 'block';
+            visibleCount++;
+        } else {
+            contract.style.display = 'none';
+        }
+    });
+    
+    // ✨ تحديث النص المعروض
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    counterElement.innerHTML = `
+        <strong>الفلتر الحالي:</strong> ${selectedOption.text} | 
+        <strong>عرض:</strong> ${visibleCount} عقد
     `;
+}
     
     // عرض العقود
     const contractsHtml = filteredContracts.map(contract => `
