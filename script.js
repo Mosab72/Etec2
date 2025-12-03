@@ -363,11 +363,20 @@ function getActualReviewersDate(contract) {
 
 function filterContractsByStatus(status) {
     selectedStatus = status;
-    
+
+    let filteredContracts;
+
     if (status === 'all') {
-        filteredContracts = [...contractsData];
+        filteredContracts = [...contractsData]; // احتفظ بجميع العقود
     } else {
-        let notScheduledCount = 0;
+        filteredContracts = contractsData.filter(contract => contract.status === status); // تصفية العقود بناءً على الحالة
+    }
+
+    // تحديث عدد العقود في خيار "الكل"
+    const optionAll = document.getElementById('option-all');
+    optionAll.textContent = `الكل (${filteredContracts.length})`;
+
+    displayContracts(filteredContracts); // عرض العقود المصفاة
         
         filteredContracts = contractsData.filter(c => {
             const vc = c.visitComplianceStatus || '';
