@@ -249,24 +249,35 @@ function getDepartmentStats() {
 function displayContractDetails() {
     const detailsContainer = document.getElementById('contracts-details-list');
     
-    // إنشاء الفلتر
-    function filterContractsByStatus(status) {
-    selectedStatus = status;
+    <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فلتر حالة العقود</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .contracts-filter { margin-bottom: 20px; }
+        .contract { margin: 5px 0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
 
-    let filteredContracts;
+    <div class="contracts-filter">
+        <h3>🔍 فلتر حالة العقود</h3>
+        <select id="status-filter" onchange="filterContractsByStatus(this.value)">
+            <option value="all" id="option-all">الكل (${contractsData.length})</option>
+            <option value="undefined">غير محددة (228)</option>
+            <option value="visitScheduledDelayed">تم جدولة الزيارة - متأخر (95)</option>
+            <option value="noDocsDelayed">بدون تسليم وثائق - متأخر (59)</option>
+            <option value="notScheduledDelayed">لم تتم جدولة الزيارة - متأخر (42)</option>
+            <option value="visitScheduled">تم جدولة الزيارة (19)</option>
+            <option value="noDocs">بدون تسليم وثائق محدثة (2)</option>
+        </select>
+    </div>
 
-    if (status === 'all') {
-        filteredContracts = [...contractsData]; // احتفظ بجميع العقود
-    } else {
-        filteredContracts = contractsData.filter(c => c.status === status); // تصفية العقود بناءً على الحالة
-    }
+    <div id="contracts-list"></div>
 
-    // تحديث النص في خيار "الكل"
-    const optionAll = document.getElementById('option-all');
-    optionAll.textContent = status === 'all' ? `الكل (${contractsData.length})` : status; // تغيير الكلمة حسب الحالة المختارة
-
-    displayContracts(filteredContracts); // عرض العقود المصفاة
-}
 
     // عرض العقود
     const contractsHtml = filteredContracts.map(contract => `
