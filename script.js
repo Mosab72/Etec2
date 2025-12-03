@@ -250,21 +250,24 @@ function displayContractDetails() {
     const detailsContainer = document.getElementById('contracts-details-list');
     
     // إنشاء الفلتر
-    const filterHtml = `
-        <div class="contracts-filter">
-            <h3>🔍 فلتر حالة العقود</h3>
-            <select id="status-filter" onchange="filterContractsByStatus(this.value)">
-                <option value="all" id="option-all">الكل (${contractsData.length})</option>
-                <option value="undefined">غير محددة (228)</option>
-                <option value="visitScheduledDelayed">تم جدولة الزيارة - متأخر (95)</option>
-                <option value="noDocsDelayed">بدون تسليم وثائق - متأخر (59)</option>
-                <option value="notScheduledDelayed">لم تتم جدولة الزيارة - متأخر (42)</option>
-                <option value="visitScheduled">تم جدولة الزيارة (19)</option>
-                <option value="noDocs">بدون تسليم وثائق محدثة (2)</option>
-            </select>
-        </div>
-    `;
-    
+    function filterContractsByStatus(status) {
+    selectedStatus = status;
+
+    let filteredContracts;
+
+    if (status === 'all') {
+        filteredContracts = [...contractsData]; // احتفظ بجميع العقود
+    } else {
+        filteredContracts = contractsData.filter(c => c.status === status); // تصفية العقود بناءً على الحالة
+    }
+
+    // تحديث النص في خيار "الكل"
+    const optionAll = document.getElementById('option-all');
+    optionAll.textContent = status === 'all' ? `الكل (${contractsData.length})` : status; // تغيير الكلمة حسب الحالة المختارة
+
+    displayContracts(filteredContracts); // عرض العقود المصفاة
+}
+
     // عرض العقود
     const contractsHtml = filteredContracts.map(contract => `
         <div class="contract-card">
