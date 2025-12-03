@@ -373,10 +373,14 @@ function filterContractsByStatus(status) {
     }
 
     // تحديث عدد العقود في خيار "الكل"
-    const optionAll = document.getElementById('option-all');
-    optionAll.textContent = `الكل (${filteredContracts.length})`;
+const optionAll = document.getElementById('option-all');
 
-    displayContracts(filteredContracts); // عرض العقود المصفاة
+// تحديث النص ليكون الحالة المختارة دون الحاجة لعدد العقود
+if (status === 'all') {
+    optionAll.textContent = `الكل (${contractsData.length})`; // إذا كانت حالة "كل"
+} else {
+    optionAll.textContent = status; // استخدام الحالة المختارة كمحتوى نص
+}
         
         filteredContracts = contractsData.filter(c => {
             const vc = c.visitComplianceStatus || '';
