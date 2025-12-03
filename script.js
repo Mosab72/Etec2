@@ -109,7 +109,7 @@ function updateOverview() {
     
     let html = `
         <div class="overview-section">
-            <h3>📊 حالة العقود</h3>
+            <h3> حالة العقود</h3>
             <div class="overview-grid">
                 <div class="overview-card">
                     <div class="overview-label">إجمالي العقود</div>
@@ -156,7 +156,7 @@ function updateOverview() {
         </div>
         
         <div class="overview-section">
-            <h3>📚 التوزيع حسب التخصصات</h3>
+            <h3> التوزيع حسب التخصصات</h3>
             <div class="overview-list">
                 ${departmentStats.map(dept => `
                     <div class="overview-item">
