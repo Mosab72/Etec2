@@ -318,10 +318,6 @@ function displayContractDetails() {
                     <span class="contract-value">${contract.visitScheduled || 'لم تتم الجدولة'}</span>
                 </div>
                 <div class="contract-row">
-                    <span class="contract-label">🗓️ التاريخ الفعلي المجدول لزيارة المراجعين:</span>
-                    <span class="contract-value">${getActualReviewersDate(contract)}</span>
-                </div>
-                <div class="contract-row">
                     <span class="contract-label">✅ اتباع شروط التاريخ المجدول:</span>
                     <span class="contract-value">${contract.visitComplianceStatus}</span>
                 </div>
