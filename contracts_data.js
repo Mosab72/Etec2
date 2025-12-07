@@ -6850,3 +6850,5 @@ const contractsData = [
     "program": "ماجستير، علم الاجتماع، كلية الآداب والعلوم الإنسانية، جامعة طيبة"
   }
 ];
+
+console.log('تم تحميل', contractsData.length, 'عقد بنجاح');
