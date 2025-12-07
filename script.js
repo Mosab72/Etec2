@@ -314,7 +314,7 @@ function displayContractDetails() {
                     <span class="contract-value">${contract.docsComplianceStatus}</span>
                 </div>
                 <div class="contract-row">
-                    <span class="contract-label">🗓️ التاريخ المجدول لزيارة التحقق:</span>
+                    <span class="contract-label">🗓️ التاريخ المجدول لزيارة المراجعين:</span>
                     <span class="contract-value">${contract.visitScheduled || 'لم تتم الجدولة'}</span>
                 </div>
                 <div class="contract-row">
